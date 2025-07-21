@@ -26,8 +26,7 @@ id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
 name = Column(String(100), unique=True, nullable=False, index=True)
 description = Column(Text, nullable=True)
 # Relationships
-permissions = relationship("Permission", secondary=role_permissions, back_populates="r
-oles")
+permissions = relationship("Permission", secondary=role_permissions, back_populates="roles")
 users = relationship("User", secondary=user_roles, back_populates="roles")
 class Permission(Base):
 tablename = "permissions"
