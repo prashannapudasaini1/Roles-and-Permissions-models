@@ -27,4 +27,4 @@ def decode_access_token(token: str):
         payload = jwt.decode(token, Setting.SECRET_KEY, algorithms=[Setting.ALGORITHM])
         return payload
     except JWTError:
-        raise 
+        raise JWTError("Could not decode token")

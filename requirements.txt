@@ -1,5 +1,5 @@
 # Core FastAPI Framework
-FastAPI
+fastapi
 uvicorn[standard]
 
 # Database & ORM
@@ -11,8 +11,27 @@ alembic
 python-jose
 passlib
 python-multipart
+bcrypt
 
 # Configuration & Environment
 pydantic
 pydantic-settings
 python-dotenv
+
+# Testing
+pytest
+pytest-asyncio
+httpx
+
+# Logging & Monitoring
+loguru
+sentry-sdk
+
+# Developer Tools
+black
+mypy
+ruff
+ipython
+
+# Optional Performance
+orjson

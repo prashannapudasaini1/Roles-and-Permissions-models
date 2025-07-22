@@ -8,6 +8,7 @@ from datetime import timedelta
 from app.core import security
 from app.core.config import Setting
 from app.deps import get_current_user
+
 router = APIRouter()
 
 @router.post("/users/", response_model=UserRead)

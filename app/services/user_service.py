@@ -1,12 +1,10 @@
 from sqlalchemy.orm import Session
-from app.models.users.user import User
+from app.db.models.users.user import User
 from app.api.v1.schemas.user import UserCreate
 from app.core.security import get_password_hash,verify_password
 from jose import JWTError
 from fastapi import HTTPException,status
 from app.core import security
-
-
 def create_user(db:Session,user_in:UserCreate):
     hashed_password=security.get_password_hash(user_in.password)
     user=User(email=user_in.email,hashed_password=hashed_password)
@@ -21,7 +19,7 @@ def authenticate_user(db:Session,email:str,password:str):
         return None
     if not security.verify_password(password,user.hashed_password):
         return None
-    return User
+    return user
 
 def get_current_user(db: Session, token: str):
     credentials_exception = HTTPException(
