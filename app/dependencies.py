@@ -3,9 +3,9 @@ from app.db.models.user import User
 from sqlalchemy.orm import Session
 from app.db.database import get_db
 
-# Dummy current user for now
+
 def get_current_user(db: Session = Depends(get_db)):
-    user = db.query(User).first()  # Or query by email or id
+    user = db.query(User).first()  
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
     return user
