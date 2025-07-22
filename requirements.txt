@@ -1,3 +1,18 @@
-fastapi
+# Core FastAPI Framework
+FastAPI
 uvicorn[standard]
+
+# Database & ORM
 sqlalchemy
+psycopg2-binary
+alembic
+
+# Authentication & Security
+python-jose
+passlib
+python-multipart
+
+# Configuration & Environment
+pydantic
+pydantic-settings
+python-dotenv
