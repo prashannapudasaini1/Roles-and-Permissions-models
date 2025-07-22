@@ -1,17 +1,18 @@
-from sqlalchemy import Column, String
+import uuid
+from sqlalchemy import Column, String, Boolean, DateTime
 from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy.orm import relationship
-from uuid import uuid4
-from ..database import Base
+from sqlalchemy.sql import func
+from sqlalchemy.ext.declarative import declarative_base
 
+Base=declarative_base()
 
-users = relationship("Role", secondary=user_roles, back_populates="users")
+#Database Model
+
 class User(Base):
-    __tablename__ = "users"
-
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid4, index=True)
-    name = Column(String, nullable=False)
-    email = Column(String, unique=True, nullable=False)
-    password = Column(String, nullable=False)
-
-    posts = relationship("Post", back_populates="owner")
+    __tablename__="Users"
+    id=Column(UUID(as_uuid=True),primary_key=True,default=uuid.uuid4())
+    email=Column(String,unique=True,nullable=False,index=True)
+    hashed_password=Column(String,nullable=False)
+    is_active=Column(Boolean,default=True)
+    created_at=Column(DateTime(timezone=True),server_default=func.now())
+    updated_at=Column(DateTime(timezone=True),onupdate=func.now,server_default=func.now)
