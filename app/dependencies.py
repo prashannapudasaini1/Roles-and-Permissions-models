@@ -10,10 +10,8 @@ def get_current_user(db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="User not found")
     return user
 
-# Permission checker dependency
 def require_permission(permission: str):
     def checker(user: User = Depends(get_current_user)):
-        # Dummy: allow any permission
         allowed_permissions = ["post:create", "post:read", "post:update", "post:delete"]
         if permission not in allowed_permissions:
             raise HTTPException(
